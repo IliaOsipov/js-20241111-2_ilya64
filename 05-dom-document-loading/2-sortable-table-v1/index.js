@@ -60,7 +60,7 @@ export default class SortableTable {
     }
 
     sort(field, sortOrder) {
-        const column = document.querySelector(`[data-id="${field}"]`);
+        const column = this.element.querySelector(`[data-id="${field}"]`);
 
         column.dataset.order = sortOrder;
 
@@ -82,7 +82,8 @@ export default class SortableTable {
                 this.data.reverse();
             }
 
-            this.element.innerHTML = this.createTemplate();
+            const table_body = this.element.querySelector(`[data-element="body"]`);
+            table_body.innerHTML = this.createTableBodyTemplate();
             this.selectSubElements();
         }
     }
